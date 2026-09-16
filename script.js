@@ -119,21 +119,25 @@ async function loadLeague() {
 
                 <div class="bench-team">
 
-                    ${benchPlayers.map(player => `
-                        <div class="player-card">
+        ${benchPlayers.map(player => `
+            <div class="player-card">
 
-                            <strong>${player.name}</strong>
+                <strong>${player.name}</strong>
 
-                            <span>
-                                ${player.position}
-                            </span>
+                <span>
+                    ${player.position}
+                </span>
 
-                            <small>
-                                ${player.club}
-                            </small>
-                           
-                        </div>
-                    `).join("")}
+                <small>
+                    ${player.club}
+                </small>
+
+                <b class="player-points">
+                    ${player.points} pts
+                </b>
+
+    </div>
+`).join("")}
 
                 </div>
 
