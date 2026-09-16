@@ -10,7 +10,7 @@ async function loadLeague() {
 
         const data = await response.json();
         console.log(data);
-        const standings = data.standings.results;
+        const standings = data.standings.standings.results;
 
         // -----------------------------
         // LEAGUE STANDINGS
