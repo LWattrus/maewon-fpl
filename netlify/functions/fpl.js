@@ -100,7 +100,7 @@ exports.handler = async function(event) {
                 fullName: `${player.first_name} ${player.second_name}`,
                 position: positions[player.element_type],
                 club: teams[player.team].name,
-                points: pick.points,
+                points: player.event_points,
                 positionNumber: pick.position,
                 multiplier: pick.multiplier,
                 isCaptain: pick.is_captain,
