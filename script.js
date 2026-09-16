@@ -59,6 +59,82 @@ async function loadLeague() {
             </div>
         `;
 
+        
+        // -----------------------------
+        // TEAM OF THE WEEK
+        // -----------------------------
+
+        const teamBox =
+            document.getElementById("team-of-the-week");
+
+        const startingPlayers =
+            data.team.filter(player => player.positionNumber <= 11);
+
+        const benchPlayers =
+            data.team.filter(player => player.positionNumber > 11);
+
+        teamBox.innerHTML = `
+            <div class="team-of-week">
+
+                <h3>${data.winner.teamName}</h3>
+
+                <p>
+                    Managed by <strong>${data.winner.manager}</strong>
+                </p>
+
+                <div class="starting-team">
+
+                    ${startingPlayers.map(player => `
+                        <div class="player-card">
+
+                            <strong>${player.name}</strong>
+
+                            <span>
+                                ${player.position}
+                            </span>
+
+                            <small>
+                                ${player.club}
+                            </small>
+
+                            ${
+                                player.isCaptain
+                                    ? `<b>© Captain</b>`
+                                    : player.isViceCaptain
+                                    ? `<b>VC</b>`
+                                    : ""
+                            }
+
+                        </div>
+                    `).join("")}
+
+                </div>
+
+                <h4>Bench</h4>
+
+                <div class="bench-team">
+
+                    ${benchPlayers.map(player => `
+                        <div class="player-card">
+
+                            <strong>${player.name}</strong>
+
+                            <span>
+                                ${player.position}
+                            </span>
+
+                            <small>
+                                ${player.club}
+                            </small>
+
+                        </div>
+                    `).join("")}
+
+                </div>
+
+            </div>
+        `;
+    
 
         // -----------------------------
         // GAMEWEEK STATISTICS
