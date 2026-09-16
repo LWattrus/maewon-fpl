@@ -98,6 +98,10 @@ async function loadLeague() {
                                 ${player.club}
                             </small>
 
+                            <b class="player-points">
+                                ${player.points} pts
+                            </b>
+
                             ${
                                 player.isCaptain
                                     ? `<b>© Captain</b>`
@@ -127,11 +131,7 @@ async function loadLeague() {
                             <small>
                                 ${player.club}
                             </small>
-
-                            <b class="player-points">
-                                ${player.points} pts
-                            </b>
-
+                           
                         </div>
                     `).join("")}
 
