@@ -209,3 +209,9 @@ footer {
         font-size: 13px;
     }
 }
+
+/* Force Team names to be dark */
+#standings-table tbody td:nth-child(3) {
+    color: #222222 !important;
+    font-weight: 600;
+}
