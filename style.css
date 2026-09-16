@@ -101,18 +101,18 @@ th {
 
 td {
     padding: 13px 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid #e5e5e5;
     font-size: 14px;
-    color: white;
+    color: #222;
 }
 
 tbody tr {
-    background: #250025;
+    background: white;
     transition: background 0.2s ease;
 }
 
 tbody tr:hover {
-    background: #3a003b;
+    background: #f3f3f3;
 }
 
 /* Rank column */
