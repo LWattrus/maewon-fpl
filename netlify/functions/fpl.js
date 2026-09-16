@@ -94,12 +94,13 @@ exports.handler = async function(event) {
 
             const player = players[pick.element];
 
-            return {
+           return {
                 id: pick.element,
                 name: player.web_name,
                 fullName: `${player.first_name} ${player.second_name}`,
                 position: positions[player.element_type],
                 club: teams[player.team].name,
+                points: pick.points,
                 positionNumber: pick.position,
                 multiplier: pick.multiplier,
                 isCaptain: pick.is_captain,
