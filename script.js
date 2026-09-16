@@ -128,6 +128,10 @@ async function loadLeague() {
                                 ${player.club}
                             </small>
 
+                            <b class="player-points">
+                                ${player.points} pts
+                            </b>
+
                         </div>
                     `).join("")}
 
