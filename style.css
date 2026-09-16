@@ -1,27 +1,46 @@
 body {
     font-family: Arial, sans-serif;
-    background: #f2f4f7;
+    background:
+        radial-gradient(circle at 50% 15%, rgba(255,255,255,0.18), transparent 25%),
+        linear-gradient(to bottom, #12001f 0%, #26002d 45%, #071d12 100%);
     margin: 0;
     color: #222;
+    min-height: 100vh;
 }
 
+
+/* =========================
+   HEADER
+========================= */
+
 header {
-    background: linear-gradient(135deg, #37003c, #5a005f);
+    background:
+        linear-gradient(rgba(55, 0, 60, 0.88), rgba(30, 0, 35, 0.94));
     color: white;
     text-align: center;
-    padding: 45px 20px;
+    padding: 45px 20px 35px;
+    border-bottom: 5px solid #e8ff00;
 }
 
 header h1 {
     margin: 0;
-    font-size: 42px;
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 header p {
-    margin-top: 10px;
+    margin: 10px 0 0;
     font-size: 20px;
-    opacity: 0.9;
+    font-weight: bold;
+    opacity: 0.95;
 }
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
 
 main {
     max-width: 1100px;
@@ -29,19 +48,37 @@ main {
     padding: 0 20px;
 }
 
+
+/* =========================
+   CARDS
+========================= */
+
 .card {
-    background: white;
+    background: rgba(255, 255, 255, 0.97);
     padding: 28px;
     margin-bottom: 28px;
-    border-radius: 14px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .card h2 {
     color: #37003c;
     margin-top: 0;
-    border-bottom: 2px solid #eee;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #eee;
     padding-bottom: 12px;
+    font-size: 28px;
+    font-weight: 900;
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
 }
 
 table {
@@ -54,25 +91,76 @@ th {
     color: white;
     padding: 14px;
     text-align: left;
+    font-size: 14px;
+    text-transform: uppercase;
 }
 
 td {
     padding: 14px;
     border-bottom: 1px solid #eee;
+    font-size: 15px;
 }
 
 tr:hover {
     background: #f8f8f8;
 }
 
-.coming-soon {
+
+/* =========================
+   LOADING
+========================= */
+
+.loading {
     text-align: center;
     padding: 30px;
     color: #666;
 }
 
+
+/* =========================
+   FOOTER
+========================= */
+
 footer {
     text-align: center;
     padding: 30px;
-    color: #777;
+    color: white;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    header h1 {
+        font-size: 34px;
+    }
+
+    header p {
+        font-size: 17px;
+    }
+
+    main {
+        padding: 0 12px;
+        margin-top: 20px;
+    }
+
+    .card {
+        padding: 18px;
+        border-radius: 12px;
+    }
+
+    .card h2 {
+        font-size: 23px;
+    }
+
+    th,
+    td {
+        padding: 10px;
+        font-size: 13px;
+    }
 }
