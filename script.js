@@ -26,7 +26,7 @@ async function loadLeague() {
             row.innerHTML = `
                 <td>${manager.rank}</td>
                 <td>${manager.player_name}</td>
-                <td>${manager.entry_name}</td>
+                <td style="color: #222222 !important; font-weight: 600;">${manager.entry_name}</td>               
                 <td>${manager.event_total}</td>
                 <td>${manager.total}</td>
             `;
