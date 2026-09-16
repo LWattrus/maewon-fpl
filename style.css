@@ -131,8 +131,8 @@ td:nth-child(2) {
 /* Team name */
 
 td:nth-child(3) {
-    color: #222;
-    font-weight: 600;
+    color: #222222 !important;
+    font-weight: 700;
 }
 
 /* Gameweek and total points */
