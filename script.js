@@ -9,65 +9,180 @@ async function loadLeague() {
         }
 
         const data = await response.json();
-
-        const main = document.querySelector("main");
-
-        if (!main) {
-            throw new Error("Could not find the main page area");
-        }
-
         const standings = data.standings.results;
 
-        let html = `
-            <section class="card">
-                <h2>Maewon FPL League Standings</h2>
+        // -----------------------------
+        // LEAGUE STANDINGS
+        // -----------------------------
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Manager</th>
-                            <th>Team</th>
-                            <th>Gameweek</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-        `;
+        const standingsBody = document.getElementById("standings-body");
+
+        standingsBody.innerHTML = "";
 
         standings.forEach(manager => {
-            html += `
-                <tr>
-                    <td>${manager.rank}</td>
-                    <td>${manager.player_name}</td>
-                    <td>${manager.entry_name}</td>
-                    <td>${manager.event_total}</td>
-                    <td>${manager.total}</td>
-                </tr>
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+                <td>${manager.rank}</td>
+                <td>${manager.player_name}</td>
+                <td>${manager.entry_name}</td>
+                <td>${manager.event_total}</td>
+                <td>${manager.total}</td>
             `;
+
+            standingsBody.appendChild(row);
         });
 
-        html += `
-                    </tbody>
-                </table>
-            </section>
+
+        // -----------------------------
+        // FIND GAMEWEEK WINNER
+        // -----------------------------
+
+        const winner = standings.reduce((highest, manager) => {
+            return manager.event_total > highest.event_total
+                ? manager
+                : highest;
+        }, standings[0]);
+
+
+        // -----------------------------
+        // GAMEWEEK WINNER
+        // -----------------------------
+
+        const winnerBox = document.getElementById("gameweek-winner");
+
+        winnerBox.innerHTML = `
+            <div class="winner-box">
+                <h3>${winner.player_name}</h3>
+                <p>${winner.entry_name}</p>
+                <div class="winner-score">${winner.event_total} points</div>
+            </div>
         `;
 
-        main.innerHTML = html;
+
+        // -----------------------------
+        // GAMEWEEK STATISTICS
+        // -----------------------------
+
+        const scores = standings.map(manager => manager.event_total);
+
+        const highestScore = Math.max(...scores);
+
+        const lowestScore = Math.min(...scores);
+
+        const averageScore =
+            scores.reduce((total, score) => total + score, 0) / scores.length;
+
+
+        const highestTotalManager = standings.reduce(
+            (highest, manager) => {
+                return manager.total > highest.total
+                    ? manager
+                    : highest;
+            },
+            standings[0]
+        );
+
+
+        const statisticsBox =
+            document.getElementById("gameweek-statistics");
+
+        statisticsBox.innerHTML = `
+            <div class="statistics-grid">
+
+                <div class="stat-box">
+                    <h3>Highest Score</h3>
+                    <p>${highestScore}</p>
+                </div>
+
+                <div class="stat-box">
+                    <h3>Lowest Score</h3>
+                    <p>${lowestScore}</p>
+                </div>
+
+                <div class="stat-box">
+                    <h3>Average Score</h3>
+                    <p>${averageScore.toFixed(1)}</p>
+                </div>
+
+                <div class="stat-box">
+                    <h3>Highest Total</h3>
+                    <p>${highestTotalManager.total}</p>
+                    <small>${highestTotalManager.player_name}</small>
+                </div>
+
+            </div>
+        `;
+
+
+        // -----------------------------
+        // WINNER CERTIFICATE
+        // -----------------------------
+
+        const certificate =
+            document.getElementById("winner-certificate");
+
+        certificate.innerHTML = `
+            <div class="certificate">
+
+                <h2>GAMEWEEK WINNER</h2>
+
+                <p class="certificate-name">
+                    ${winner.player_name}
+                </p>
+
+                <p>
+                    ${winner.entry_name}
+                </p>
+
+                <p class="certificate-score">
+                    ${winner.event_total} POINTS
+                </p>
+
+                <p>
+                    Maewon FPL League
+                </p>
+
+            </div>
+        `;
+
+
+        // -----------------------------
+        // SEASON RECORDS
+        // -----------------------------
+
+        const records =
+            document.getElementById("season-records");
+
+        records.innerHTML = `
+            <div class="records-grid">
+
+                <div class="record-box">
+                    <h3>Current Leader</h3>
+                    <p>${highestTotalManager.player_name}</p>
+                    <strong>${highestTotalManager.total} points</strong>
+                </div>
+
+                <div class="record-box">
+                    <h3>Gameweek Record</h3>
+                    <p>${winner.player_name}</p>
+                    <strong>${winner.event_total} points</strong>
+                </div>
+
+            </div>
+        `;
 
     } catch (error) {
+
         console.error("Error loading FPL data:", error);
 
-        const main = document.querySelector("main");
-
-        if (main) {
-            main.innerHTML = `
-                <section class="card">
-                    <h2>FPL League</h2>
-                    <p>Sorry, we couldn't load the league data.</p>
-                </section>
-            `;
-        }
+        document.getElementById("standings-body").innerHTML = `
+            <tr>
+                <td colspan="5">
+                    Sorry, we couldn't load the FPL data.
+                </td>
+            </tr>
+        `;
     }
 }
 
