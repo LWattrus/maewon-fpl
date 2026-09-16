@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Maewon FPL League</title>
+
     <link rel="stylesheet" href="style.css">
-    
 </head>
-    
-<script src="script.js"></script>
+
 <body>
 
     <header>
@@ -18,55 +18,92 @@
 
     <main>
 
-        <div class="card">
+        <!-- LEAGUE STANDINGS -->
+        <section class="card">
             <h2>🏆 League Standings</h2>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Manager</th>
-                        <th>Gameweek</th>
-                        <th>Total Points</th>
-                    </tr>
-                </thead>
+            <div class="table-container">
+                <table id="standings-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Manager</th>
+                            <th>Team</th>
+                            <th>Gameweek</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Loading...</td>
-                        <td>--</td>
-                        <td>--</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                    <tbody id="standings-body">
+                        <tr>
+                            <td colspan="5">Loading FPL standings...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
-        <div class="card">
+
+        <!-- GAMEWEEK WINNER -->
+        <section class="card">
             <h2>⭐ Gameweek Winner</h2>
 
-            <div class="coming-soon">
-                <h3>Coming Soon</h3>
-                <p>
-                    This section will automatically show the highest-scoring
-                    manager and their FPL team each Gameweek.
-                </p>
+            <div id="gameweek-winner">
+                <div class="loading">
+                    Loading Gameweek Winner...
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="card">
-            <h2>📊 Season Records</h2>
 
-            <div class="coming-soon">
-                <p>Season records will appear here.</p>
+        <!-- GAMEWEEK STATISTICS -->
+        <section class="card">
+            <h2>📊 Gameweek Statistics</h2>
+
+            <div id="gameweek-statistics">
+                <div class="loading">
+                    Loading statistics...
+                </div>
             </div>
-        </div>
+        </section>
+
+
+        <!-- GAMEWEEK WINNER CERTIFICATE -->
+        <section class="card">
+            <h2>🏅 Gameweek Winner Certificate</h2>
+
+            <div id="winner-certificate">
+                <div class="loading">
+                    Loading certificate...
+                </div>
+            </div>
+
+            <button onclick="window.print()" class="print-button">
+                🖨️ Print Certificate
+            </button>
+        </section>
+
+
+        <!-- SEASON RECORDS -->
+        <section class="card">
+            <h2>🏆 Season Records</h2>
+
+            <div id="season-records">
+                <div class="loading">
+                    Season records will appear here.
+                </div>
+            </div>
+        </section>
 
     </main>
+
 
     <footer>
         Maewon Elementary School FPL League
     </footer>
+
+
+    <script src="script.js"></script>
 
 </body>
 </html>
