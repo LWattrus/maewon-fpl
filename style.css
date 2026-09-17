@@ -223,3 +223,47 @@ footer {
     color: #222222 !important;
     font-weight: 600;
 }
+
+/* =========================
+   PRINT STANDINGS
+========================= */
+
+@media print {
+
+    body.print-standings * {
+        visibility: hidden;
+    }
+
+    body.print-standings #standings-table,
+    body.print-standings #standings-table * {
+        visibility: visible;
+    }
+
+    body.print-standings #standings-table {
+        position: absolute;
+        left: 0;
+        top: 40px;
+        width: 100%;
+        font-size: 11px;
+        border: 1px solid #333;
+    }
+
+    body.print-standings #standings-table th {
+        background: #37003c !important;
+        color: #e8ff00 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        padding: 8px 4px;
+    }
+
+    body.print-standings #standings-table td {
+        padding: 8px 4px;
+        font-size: 11px;
+        color: #222 !important;
+    }
+
+    @page {
+        size: A4 portrait;
+        margin: 15mm;
+    }
+}
