@@ -273,3 +273,12 @@ async function loadLeague() {
 }
 
 loadLeague();
+
+function printStandings() {
+    document.body.classList.add("print-standings");
+    window.print();
+
+    setTimeout(() => {
+        document.body.classList.remove("print-standings");
+    }, 1000);
+}
