@@ -93,7 +93,7 @@ table {
 th {
     background: #37003c;
     color: #e8ff00;
-    padding: 16px 12px;
+    padding: 11px 6px;
     text-align: left;
     font-size: 13px;
     font-weight: 800;
@@ -102,7 +102,7 @@ th {
 }
 
 td {
-    padding: 15px 12px;
+    padding: 10px 6px;
     border-bottom: 1px solid #e5e5e5;
     font-size: 14px;
     color: #222222 !important;
