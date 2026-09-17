@@ -181,6 +181,12 @@ td:nth-child(5) {
     white-space: nowrap;
 }
 
+td:nth-child(2),
+td:nth-child(3) {
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+    
 /* Gameweek and total points */
 
 td:nth-child(4),
