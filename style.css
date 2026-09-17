@@ -143,50 +143,7 @@ td:nth-child(3) {
     color: #222222 !important;
     font-weight: 600;
 }
-
-/* Narrower team column */
-
-th:nth-child(3),
-td:nth-child(3) {
-    width: 18%;
-    max-width: 180px;
-    overflow-wrap: anywhere;
-
-/* Control column widths */
-
-th:nth-child(1),
-td:nth-child(1) {
-    width: 8%;
-}
-
-th:nth-child(2),
-td:nth-child(2) {
-    width: 28%;
-}
-
-th:nth-child(3),
-td:nth-child(3) {
-    width: 18%;
-}
-
-th:nth-child(4),
-td:nth-child(4) {
-    width: 12%;
-    white-space: nowrap;
-}
-
-th:nth-child(5),
-td:nth-child(5) {
-    width: 12%;
-    white-space: nowrap;
-}
-
-td:nth-child(2),
-td:nth-child(3) {
-    overflow-wrap: anywhere;
-    word-break: normal;
-}
-    
+   
 /* Gameweek and total points */
 
 td:nth-child(4),
