@@ -2,8 +2,9 @@ const leagueId = 2326400;
 
 async function loadLeague() {
     try {
-        const response = await fetch("/.netlify/functions/fpl");
-
+        
+        const response = await fetch("/api/fpl");
+        
         if (!response.ok) {
             throw new Error("Could not load FPL data");
         }
