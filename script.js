@@ -266,13 +266,18 @@ function buildTeamOfWeek(data) {
                 <div class="shirt">
                     <div class="shirt-collar"></div>
                     <div class="shirt-number">
-                        ${player.points}
-                    </div>
+                      ${player.points} PTS
+                  </div>
                 </div>
 
-                <div class="player-name">
-                    ${player.name} ${captainBadge}
-                </div>
+            <div class="player-name">
+                ${player.name}
+                ${captainBadge}
+            </div>
+
+<div class="player-points-label">
+    ${player.points} points
+</div>
 
                 <div class="player-club">
                     ${player.club}
