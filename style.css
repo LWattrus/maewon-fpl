@@ -840,3 +840,125 @@ function printTeamOfWeek() {
     line-height: 1.2;
     overflow-wrap: anywhere;
 }
+
+/* =========================
+   CLUB JERSEYS
+========================= */
+
+.shirt {
+    background: var(--kit-main, #555);
+    border-color: var(--kit-secondary, white);
+}
+
+.shirt::before,
+.shirt::after {
+    background: var(--kit-main, #555);
+    border-color: var(--kit-secondary, white);
+}
+
+.shirt-collar {
+    border-color: var(--kit-secondary, white);
+}
+
+
+/* Premier League club colours */
+
+.kit-arsenal {
+    --kit-main: #db0007;
+    --kit-secondary: white;
+}
+
+.kit-aston-villa {
+    --kit-main: #670e36;
+    --kit-secondary: #95bfe5;
+}
+
+.kit-bournemouth {
+    --kit-main: #da291c;
+    --kit-secondary: black;
+}
+
+.kit-brentford {
+    --kit-main: #e30613;
+    --kit-secondary: white;
+}
+
+.kit-brighton {
+    --kit-main: #0057b8;
+    --kit-secondary: white;
+}
+
+.kit-burnley {
+    --kit-main: #6c1d45;
+    --kit-secondary: #99d6ea;
+}
+
+.kit-chelsea {
+    --kit-main: #034694;
+    --kit-secondary: white;
+}
+
+.kit-crystal-palace {
+    --kit-main: #1b458f;
+    --kit-secondary: #c4122e;
+}
+
+.kit-everton {
+    --kit-main: #003399;
+    --kit-secondary: white;
+}
+
+.kit-fulham {
+    --kit-main: white;
+    --kit-secondary: black;
+}
+
+.kit-leeds-united {
+    --kit-main: white;
+    --kit-secondary: #1d428a;
+}
+
+.kit-liverpool {
+    --kit-main: #c8102e;
+    --kit-secondary: white;
+}
+
+.kit-manchester-city {
+    --kit-main: #6cabdd;
+    --kit-secondary: white;
+}
+
+.kit-manchester-united {
+    --kit-main: #da291c;
+    --kit-secondary: black;
+}
+
+.kit-newcastle-united {
+    --kit-main: black;
+    --kit-secondary: white;
+}
+
+.kit-nottingham-forest {
+    --kit-main: #e53233;
+    --kit-secondary: white;
+}
+
+.kit-sunderland {
+    --kit-main: #eb172b;
+    --kit-secondary: white;
+}
+
+.kit-tottenham-hotspur {
+    --kit-main: white;
+    --kit-secondary: #132257;
+}
+
+.kit-west-ham-united {
+    --kit-main: #7a263a;
+    --kit-secondary: #1bb1e7;
+}
+
+.kit-wolverhampton-wanderers {
+    --kit-main: #fdb913;
+    --kit-secondary: black;
+}
