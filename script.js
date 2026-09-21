@@ -247,46 +247,43 @@ function buildTeamOfWeek(data) {
         `${defenders.length}-${midfielders.length}-${forwards.length}`;
 
 
-    function createPlayerCard(player) {
+ function createPlayerCard(player) {
 
-        let captainBadge = "";
+    let captainBadge = "";
 
-        if (player.isCaptain) {
-            captainBadge = `<span class="captain-badge">C</span>`;
-        }
+    if (player.isCaptain) {
+        captainBadge = `<span class="captain-badge">C</span>`;
+    } else if (player.isViceCaptain) {
+        captainBadge = `<span class="captain-badge">VC</span>`;
+    }
 
-        if (player.isViceCaptain) {
-            captainBadge = `<span class="captain-badge">VC</span>`;
-        }
+    // Convert club name into a CSS-friendly class
+    const clubClass = player.club
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, "-");
 
+    return `
+        <div class="pitch-player">
 
-        return `
-            <div class="pitch-player">
+            <div class="shirt kit-${clubClass}">
+                <div class="shirt-collar"></div>
 
-                <div class="shirt">
-                    <div class="shirt-collar"></div>
-                    <div class="shirt-number">
-                      ${player.points} PTS
-                  </div>
+                <div class="shirt-number">
+                    ${player.points}
                 </div>
+            </div>
 
             <div class="player-name">
-                ${player.name}
-                ${captainBadge}
+                ${player.name} ${captainBadge}
             </div>
 
-<div class="player-points-label">
-    ${player.points} points
-</div>
-
-                <div class="player-club">
-                    ${player.club}
-                </div>
-
+            <div class="player-club">
+                ${player.club}
             </div>
-        `;
 
-    }
+        </div>
+    `;
+}
 
 
     function createPlayerRow(players) {
