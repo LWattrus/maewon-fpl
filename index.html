@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,12 +20,13 @@
     <main>
 
         <!-- LEAGUE STANDINGS -->
+
         <section class="card">
             <h2>🏆 League Standings</h2>
 
             <button onclick="printStandings()" class="print-button">
-    🖨️ Print Standings
-</button>
+                🖨️ Print Standings
+            </button>
 
             <div class="table-container">
                 <table id="standings-table">
@@ -49,6 +51,7 @@
 
 
         <!-- GAMEWEEK WINNER -->
+
         <section class="card">
             <h2>⭐ Gameweek Winner</h2>
 
@@ -59,18 +62,26 @@
             </div>
         </section>
 
-<!-- TEAM OF THE WEEK -->
-<section class="card">
-    <h2>👕 Team of the Week</h2>
 
-    <div id="team-of-the-week">
-        <div class="loading">
-            Loading Team of the Week...
-        </div>
-    </div>
-</section>
-        
+        <!-- TEAM OF THE WEEK -->
+
+        <section class="card team-section-card">
+            <h2>👕 Team of the Week</h2>
+
+            <button onclick="printTeamOfWeek()" class="print-button">
+                🖨️ Print Team of the Week
+            </button>
+
+            <div id="team-of-the-week">
+                <div class="loading">
+                    Loading Team of the Week...
+                </div>
+            </div>
+        </section>
+
+
         <!-- GAMEWEEK STATISTICS -->
+
         <section class="card">
             <h2>📊 Gameweek Statistics</h2>
 
@@ -82,7 +93,8 @@
         </section>
 
 
-        <!-- GAMEWEEK WINNER CERTIFICATE -->
+        <!-- WINNER CERTIFICATE -->
+
         <section class="card">
             <h2>🏅 Gameweek Winner Certificate</h2>
 
@@ -99,6 +111,7 @@
 
 
         <!-- SEASON RECORDS -->
+
         <section class="card">
             <h2>🏆 Season Records</h2>
 
