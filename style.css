@@ -790,3 +790,53 @@ function printTeamOfWeek() {
     printWindow.document.close();
 
 }
+
+/* =========================
+   PLAYER POINTS LABEL
+========================= */
+
+.player-points-label {
+    margin-top: 3px;
+    display: inline-block;
+    background: #e8ff00;
+    color: #37003c;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 9px;
+    font-weight: 900;
+}
+
+/* =========================
+   FORMATION IMPROVEMENTS
+========================= */
+
+.football-pitch {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 650px;
+}
+
+.pitch-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    position: relative;
+    z-index: 2;
+}
+
+.pitch-player {
+    flex: 0 1 105px;
+    min-width: 0;
+}
+
+.player-name {
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+
+.player-club {
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
