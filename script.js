@@ -393,24 +393,28 @@ function printStandings() {
     }, 1000);
 
 }
-
-
 /* =========================
    PRINT TEAM OF THE WEEK
 ========================= */
 
 function printTeamOfWeek() {
 
+    const teamPoster = document.querySelector(".team-poster");
+
+    if (!teamPoster) {
+        alert("Team of the Week is not ready yet.");
+        return;
+    }
+
+    // Temporarily hide everything except the poster
     document.body.classList.add("print-team");
 
     window.print();
 
+    // Restore the website after printing
     setTimeout(() => {
-
         document.body.classList.remove("print-team");
-
     }, 1000);
-
 }
 
 
