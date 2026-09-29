@@ -1,6 +1,4 @@
-
 const leagueId = 2326400;
-
 
 /* =========================
    LOAD LEAGUE DATA
@@ -19,7 +17,6 @@ async function loadLeague() {
         const data = await response.json();
 
         const standings = data.standings.standings.results;
-
 
         /* =========================
            LEAGUE STANDINGS
@@ -48,7 +45,6 @@ async function loadLeague() {
 
         });
 
-
         /* =========================
            GAMEWEEK WINNER
         ========================= */
@@ -60,7 +56,6 @@ async function loadLeague() {
                 : highest;
 
         }, standings[0]);
-
 
         const winnerBox =
             document.getElementById("gameweek-winner");
@@ -75,13 +70,11 @@ async function loadLeague() {
             </div>
         `;
 
-
         /* =========================
            TEAM OF THE WEEK
         ========================= */
 
         buildTeamOfWeek(data);
-
 
         /* =========================
            GAMEWEEK STATISTICS
@@ -99,7 +92,6 @@ async function loadLeague() {
             scores.reduce((total, score) => total + score, 0)
             / scores.length;
 
-
         const highestTotalManager = standings.reduce(
             (highest, manager) => {
 
@@ -110,7 +102,6 @@ async function loadLeague() {
             },
             standings[0]
         );
-
 
         const statisticsBox =
             document.getElementById("gameweek-statistics");
@@ -142,28 +133,11 @@ async function loadLeague() {
             </div>
         `;
 
-
         /* =========================
            CERTIFICATE
         ========================= */
 
-        const certificate =
-            document.getElementById("winner-certificate");
-
-        certificate.innerHTML = `
-            <div class="certificate">
-                <h2>GAMEWEEK WINNER</h2>
-                <p class="certificate-name">
-                    ${winner.player_name}
-                </p>
-                <p>${winner.entry_name}</p>
-                <p class="certificate-score">
-                    ${winner.event_total} POINTS
-                </p>
-                <p>Maewon FPL League</p>
-            </div>
-        `;
-
+        buildCertificate(data, winner);
 
         /* =========================
            SEASON RECORDS
@@ -189,7 +163,6 @@ async function loadLeague() {
 
             </div>
         `;
-
 
     } catch (error) {
 
@@ -225,7 +198,6 @@ function buildTeamOfWeek(data) {
         player => player.positionNumber > 11
     );
 
-
     const goalkeepers = startingPlayers.filter(
         player => player.position === "Goalkeeper"
     );
@@ -242,49 +214,46 @@ function buildTeamOfWeek(data) {
         player => player.position === "Forward"
     );
 
-
     const formation =
         `${defenders.length}-${midfielders.length}-${forwards.length}`;
 
+    function createPlayerCard(player) {
 
- function createPlayerCard(player) {
+        let captainBadge = "";
 
-    let captainBadge = "";
+        if (player.isCaptain) {
+            captainBadge = `<span class="captain-badge">C</span>`;
+        } else if (player.isViceCaptain) {
+            captainBadge = `<span class="captain-badge">VC</span>`;
+        }
 
-    if (player.isCaptain) {
-        captainBadge = `<span class="captain-badge">C</span>`;
-    } else if (player.isViceCaptain) {
-        captainBadge = `<span class="captain-badge">VC</span>`;
-    }
+        const clubClass = player.club
+            .toLowerCase()
+            .replace(/[^a-z0-9]/g, "-");
 
-    // Convert club name into a CSS-friendly class
-    const clubClass = player.club
-        .toLowerCase()
-        .replace(/[^a-z0-9]/g, "-");
+        return `
+            <div class="pitch-player">
 
-    return `
-        <div class="pitch-player">
+                <div class="shirt kit-${clubClass}">
+                    <div class="shirt-collar"></div>
 
-            <div class="shirt kit-${clubClass}">
-                <div class="shirt-collar"></div>
-
-                <div class="shirt-number">
-                    ${player.points}
+                    <div class="shirt-number">
+                        ${player.points}
+                    </div>
                 </div>
+
+                <div class="player-name">
+                    ${player.name} ${captainBadge}
+                </div>
+
+                <div class="player-club">
+                    ${player.club}
+                </div>
+
             </div>
+        `;
 
-            <div class="player-name">
-                ${player.name} ${captainBadge}
-            </div>
-
-            <div class="player-club">
-                ${player.club}
-            </div>
-
-        </div>
-    `;
-}
-
+    }
 
     function createPlayerRow(players) {
 
@@ -297,7 +266,6 @@ function buildTeamOfWeek(data) {
         `;
 
     }
-
 
     teamBox.innerHTML = `
 
@@ -324,7 +292,6 @@ function buildTeamOfWeek(data) {
 
             </div>
 
-
             <div class="football-pitch">
 
                 <div class="pitch-lines"></div>
@@ -338,7 +305,6 @@ function buildTeamOfWeek(data) {
                 ${createPlayerRow(goalkeepers)}
 
             </div>
-
 
             <div class="bench-section">
 
@@ -364,9 +330,55 @@ function buildTeamOfWeek(data) {
 
             </div>
 
-
             <div class="team-poster-footer">
                 MAEWON FANTASY • GAMEWEEK ${data.gameweek}
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================
+   CERTIFICATE
+========================= */
+
+function buildCertificate(data, winner) {
+
+    const certificate =
+        document.getElementById("winner-certificate");
+
+    if (!certificate) {
+        return;
+    }
+
+    const today = new Date();
+
+    const formattedDate = today.toLocaleDateString(
+        "en-US",
+        {
+            month: "long",
+            day: "numeric",
+            year: "numeric"
+        }
+    ).toUpperCase();
+
+    certificate.innerHTML = `
+
+        <div class="certificate-design">
+
+            <div class="certificate-name">
+                ${winner.player_name}
+            </div>
+
+            <div class="certificate-gameweek">
+                GAMEWEEK ${data.gameweek}
+            </div>
+
+            <div class="certificate-date">
+                ${formattedDate}
             </div>
 
         </div>
@@ -393,28 +405,257 @@ function printStandings() {
     }, 1000);
 
 }
+
+
 /* =========================
    PRINT TEAM OF THE WEEK
 ========================= */
 
 function printTeamOfWeek() {
 
-    const teamPoster = document.querySelector(".team-poster");
+    const teamPoster =
+        document.querySelector(".team-poster");
 
     if (!teamPoster) {
+
         alert("Team of the Week is not ready yet.");
+
         return;
+
     }
 
-    // Temporarily hide everything except the poster
-    document.body.classList.add("print-team");
+    const printWindow = window.open(
+        "",
+        "_blank",
+        "width=900,height=1200"
+    );
 
-    window.print();
+    if (!printWindow) {
 
-    // Restore the website after printing
-    setTimeout(() => {
-        document.body.classList.remove("print-team");
-    }, 1000);
+        alert(
+            "Please allow pop-ups to print the Team of the Week."
+        );
+
+        return;
+
+    }
+
+    printWindow.document.write(`
+        <!DOCTYPE html>
+
+        <html>
+
+        <head>
+
+            <title>Maewon Team of the Week</title>
+
+            <link
+                rel="stylesheet"
+                href="${window.location.origin}/style.css"
+            >
+
+        </head>
+
+        <body>
+
+            ${teamPoster.outerHTML}
+
+            <script>
+
+                window.onload = function() {
+
+                    setTimeout(function() {
+
+                        window.print();
+
+                    }, 700);
+
+                };
+
+            <\/script>
+
+        </body>
+
+        </html>
+    `);
+
+    printWindow.document.close();
+
+}
+
+
+/* =========================
+   PRINT CERTIFICATE
+========================= */
+
+function printCertificate() {
+
+    const certificate =
+        document.querySelector(".certificate-design");
+
+    if (!certificate) {
+
+        alert("The certificate is not ready yet.");
+
+        return;
+
+    }
+
+    const printWindow = window.open(
+        "",
+        "_blank",
+        "width=1200,height=900"
+    );
+
+    if (!printWindow) {
+
+        alert(
+            "Please allow pop-ups to print the certificate."
+        );
+
+        return;
+
+    }
+
+    printWindow.document.write(`
+        <!DOCTYPE html>
+
+        <html>
+
+        <head>
+
+            <meta charset="UTF-8">
+
+            <title>Maewon Fantasy Certificate</title>
+
+            <style>
+
+                @page {
+                    size: A4 landscape;
+                    margin: 0;
+                }
+
+                * {
+                    box-sizing: border-box;
+                }
+
+                html,
+                body {
+                    margin: 0;
+                    padding: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                body {
+                    background: white;
+                    -webkit-print-color-adjust: exact !important;
+                    print-color-adjust: exact !important;
+                }
+
+                .certificate-design {
+                    position: relative;
+
+                    width: 100vw;
+                    height: 100vh;
+
+                    background-image:
+                        url("/Certificate%20Template.jpg");
+
+                    background-size: 100% 100%;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+
+                .certificate-name {
+                    position: absolute;
+
+                    left: 15%;
+                    right: 15%;
+
+                    top: 42%;
+
+                    text-align: center;
+
+                    font-family: Arial, sans-serif;
+
+                    font-size: 42px;
+                    font-weight: 900;
+
+                    color: #2c2c2c;
+
+                    text-transform: uppercase;
+                }
+
+                .certificate-gameweek {
+                    position: absolute;
+
+                    left: 25%;
+                    right: 25%;
+
+                    top: 67%;
+
+                    text-align: center;
+
+                    font-family: Arial, sans-serif;
+
+                    font-size: 22px;
+                    font-weight: 800;
+
+                    color: #a8660b;
+
+                    text-transform: uppercase;
+                }
+
+                .certificate-date {
+                    position: absolute;
+
+                    left: 25%;
+                    right: 25%;
+
+                    top: 71%;
+
+                    text-align: center;
+
+                    font-family: Arial, sans-serif;
+
+                    font-size: 17px;
+                    font-weight: 700;
+
+                    color: #2c2c2c;
+
+                    text-transform: uppercase;
+                }
+
+            </style>
+
+        </head>
+
+        <body>
+
+            ${certificate.outerHTML}
+
+            <script>
+
+                window.onload = function() {
+
+                    setTimeout(function() {
+
+                        window.print();
+
+                    }, 700);
+
+                };
+
+            <\/script>
+
+        </body>
+
+        </html>
+    `);
+
+    printWindow.document.close();
+
 }
 
 
