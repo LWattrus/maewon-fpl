@@ -501,10 +501,28 @@ function printCertificate() {
 
     }
 
+    const nameElement =
+        certificate.querySelector(".certificate-name");
+
+    const gameweekElement =
+        certificate.querySelector(".certificate-gameweek");
+
+    const dateElement =
+        certificate.querySelector(".certificate-date");
+
+    const winnerName =
+        nameElement ? nameElement.textContent.trim() : "";
+
+    const gameweek =
+        gameweekElement ? gameweekElement.textContent.trim() : "";
+
+    const date =
+        dateElement ? dateElement.textContent.trim() : "";
+
     const printWindow = window.open(
         "",
         "_blank",
-        "width=1200,height=900"
+        "width=1200,height=850"
     );
 
     if (!printWindow) {
@@ -518,6 +536,7 @@ function printCertificate() {
     }
 
     printWindow.document.write(`
+
         <!DOCTYPE html>
 
         <html>
@@ -541,90 +560,113 @@ function printCertificate() {
 
                 html,
                 body {
+
                     margin: 0;
                     padding: 0;
+
                     width: 100%;
                     height: 100%;
+
+                    background: white;
+
                 }
 
                 body {
-                    background: white;
+
                     -webkit-print-color-adjust: exact !important;
                     print-color-adjust: exact !important;
+
                 }
 
-                .certificate-design {
+                .certificate {
+
                     position: relative;
 
                     width: 100vw;
                     height: 100vh;
 
+                    overflow: hidden;
+
                     background-image:
                         url("/Certificate%20Template.jpg");
 
                     background-size: 100% 100%;
+
                     background-position: center;
+
                     background-repeat: no-repeat;
+
                 }
 
-                .certificate-name {
+                .winner-name {
+
                     position: absolute;
 
-                    left: 15%;
-                    right: 15%;
+                    left: 12%;
+                    right: 12%;
 
-                    top: 42%;
+                    top: 47%;
 
                     text-align: center;
 
                     font-family: Arial, sans-serif;
 
                     font-size: 42px;
+
+                    line-height: 1.05;
+
                     font-weight: 900;
 
                     color: #2c2c2c;
 
                     text-transform: uppercase;
+
                 }
 
-                .certificate-gameweek {
+                .gameweek {
+
                     position: absolute;
 
                     left: 25%;
                     right: 25%;
 
-                    top: 67%;
+                    top: 61%;
 
                     text-align: center;
 
                     font-family: Arial, sans-serif;
 
                     font-size: 22px;
+
                     font-weight: 800;
 
                     color: #a8660b;
 
                     text-transform: uppercase;
+
                 }
 
-                .certificate-date {
+                .date {
+
                     position: absolute;
 
                     left: 25%;
                     right: 25%;
 
-                    top: 71%;
+                    top: 65%;
 
                     text-align: center;
 
                     font-family: Arial, sans-serif;
 
                     font-size: 17px;
+
                     font-weight: 700;
 
                     color: #2c2c2c;
 
                     text-transform: uppercase;
+
                 }
 
             </style>
@@ -633,9 +675,26 @@ function printCertificate() {
 
         <body>
 
-            ${certificate.outerHTML}
+            <div class="certificate">
+
+                <div class="winner-name">
+                    ${winnerName}
+                </div>
+
+                <div class="gameweek">
+                    ${gameweek}
+                </div>
+
+                <div class="date">
+                    ${date}
+                </div>
+
+            </div>
 
             <script>
+
+                const image =
+                    document.querySelector(".certificate");
 
                 window.onload = function() {
 
@@ -643,7 +702,7 @@ function printCertificate() {
 
                         window.print();
 
-                    }, 700);
+                    }, 800);
 
                 };
 
@@ -652,6 +711,7 @@ function printCertificate() {
         </body>
 
         </html>
+
     `);
 
     printWindow.document.close();
