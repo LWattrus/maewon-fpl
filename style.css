@@ -1238,3 +1238,140 @@ function printTeamOfWeek() {
     background: #4d0054;
 
 }
+
+/* =========================
+   CERTIFICATE POSITIONING
+========================= */
+
+.certificate-design {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 1480 / 986;
+
+    background-image:
+        url("/Certificate%20Template.jpg");
+
+    background-size: 100% 100%;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    overflow: hidden;
+}
+
+
+/* WINNER NAME */
+
+.certificate-design .certificate-name {
+
+    position: absolute;
+
+    left: 12%;
+    right: 12%;
+
+    top: 47%;
+
+    text-align: center;
+
+    font-family: Arial, sans-serif;
+
+    font-size: clamp(26px, 3.2vw, 46px);
+
+    line-height: 1.05;
+
+    font-weight: 900;
+
+    color: #2c2c2c;
+
+    text-transform: uppercase;
+
+}
+
+
+/* GAMEWEEK */
+
+.certificate-design .certificate-gameweek {
+
+    position: absolute;
+
+    left: 25%;
+    right: 25%;
+
+    top: 61%;
+
+    text-align: center;
+
+    font-family: Arial, sans-serif;
+
+    font-size: clamp(15px, 1.8vw, 24px);
+
+    font-weight: 800;
+
+    color: #a8660b;
+
+    text-transform: uppercase;
+
+}
+
+
+/* DATE */
+
+.certificate-design .certificate-date {
+
+    position: absolute;
+
+    left: 25%;
+    right: 25%;
+
+    top: 65%;
+
+    text-align: center;
+
+    font-family: Arial, sans-serif;
+
+    font-size: clamp(12px, 1.4vw, 18px);
+
+    font-weight: 700;
+
+    color: #2c2c2c;
+
+    text-transform: uppercase;
+
+}
+
+
+/* CERTIFICATE BUTTON */
+
+.certificate-print-button {
+
+    display: block;
+
+    margin: 20px auto;
+
+    padding: 12px 24px;
+
+    background: #37003c;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+}
+
+.certificate-print-button:hover {
+
+    background: #4d0054;
+
+}
