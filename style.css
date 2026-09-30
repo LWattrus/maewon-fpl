@@ -464,22 +464,20 @@ footer {
 /* Player rows */
 
 .pitch-row {
-    position: relative;
-    z-index: 2;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 12px;
     width: 100%;
+    gap: 55px;
+    margin: 22px 0;
 }
-
 
 /* Player cards */
 
 .pitch-player {
-    width: 105px;
+    width: 95px;
     text-align: center;
-    flex: 0 1 105px;
+    flex: 0 0 95px;
     min-width: 0;
 }
 
