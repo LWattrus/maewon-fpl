@@ -227,31 +227,42 @@ function buildTeamOfWeek(data) {
             captainBadge = `<span class="captain-badge">VC</span>`;
         }
 
-        const clubClass = player.club
-            .toLowerCase()
-            .replace(/[^a-z0-9]/g, "-");
+        const kitFiles = {
+    "Arsenal": "Arsenal.png",
+    "Aston Villa": "Aston Villa.png",
+    "Bournemouth": "Bournemouth.png",
+    "Brentford": "Brentford.png",
+    "Brighton": "Brighton.png",
+    "Chelsea": "Chelsea.png",
+    "Coventry": "Coventry.png",
+    "Crystal Palace": "Crystal Palace.png",
+    "Everton": "Everton.png",
+    "Fulham": "Fulham.png",
+    "Hull": "Hull.png",
+    "Ipswich": "Ipswich.png",
+    "Leeds": "Leeds.png",
+    "Liverpool": "Liverpool.png",
+    "Man City": "Man City.png",
+    "Manchester United": "Manchester United.png",
+    "Newcastle": "Newcastle.png",
+    "Nottingham Forest": "Nottingham Forest.png",
+    "Sunderland": "Sunderland.png",
+    "Tottenham": "Tottenham.png"
+};
 
-        return `
-            <div class="pitch-player">
+const kitFile = kitFiles[player.club];
 
-                <div class="shirt kit-${clubClass}">
-                    <div class="shirt-collar"></div>
-
-                    <div class="shirt-number">
-                        ${player.points}
-                    </div>
-                </div>
-
-                <div class="player-name">
-                    ${player.name} ${captainBadge}
-                </div>
-
-                <div class="player-club">
-                    ${player.club}
-                </div>
-
-            </div>
-        `;
+return `
+<div class="pitch-player">
+    <img
+        class="kit-image"
+        src="/kits/${encodeURIComponent(kitFile)}"
+        alt="${player.club} home kit"
+    >
+    <div class="kit-points">${player.points}</div>
+    <div class="player-name">${player.name} ${captainBadge}</div>
+    <div class="player-club">${player.club}</div>
+</div>`;
 
     }
 
