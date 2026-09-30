@@ -862,22 +862,21 @@ function printTeamOfWeek() {
 
 /* Real club kit images */
 .kit-image {
-    width: 70px;
-    height: 82px;
+    width: 95px;
+    height: 110px;
     object-fit: contain;
     display: block;
     margin: 0 auto 4px auto;
 }
-
 .kit-points {
     display: inline-block;
     background: #f5c400;
     color: #111;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 800;
-    line-height: 20px;
-    min-width: 20px;
-    height: 20px;
+    line-height: 24px;
+    min-width: 24px;
+    height: 24px;
     border-radius: 50%;
     text-align: center;
     margin-top: -2px;
@@ -886,15 +885,15 @@ function printTeamOfWeek() {
 }
 
 .pitch-player .player-name {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
-    line-height: 15px;
+    line-height: 17px;
     margin-top: 3px;
 }
 
 .pitch-player .player-club {
-    font-size: 10px;
-    line-height: 13px;
+    font-size: 11px;
+    line-height: 14px;
     opacity: 0.8;
 }
 /* Premier League club colours */
