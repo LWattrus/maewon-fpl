@@ -245,7 +245,7 @@ function buildTeamOfWeek(data) {
     "Man City": "Man City.png",
     "Manchester United": "Manchester United.png",
     "Newcastle": "Newcastle.png",
-    "Nottingham Forest": "Nottingham Forest.png",
+    "Nott'm Forest": "Nottingham Forest.png",    
     "Sunderland": "Sunderland.png",
     "Tottenham": "Tottenham.png"
 };
